@@ -1,5 +1,7 @@
+
+//modificar con props y destructurar props.xxxx 
 const NavItemBT = ({ classNameLi, classNameA, href, children }) => {
-	//destructurando
+
 
 	return (
 		<li className={classNameLi}>

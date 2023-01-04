@@ -1,0 +1,33 @@
+
+
+.navBarLogo {
+	height: 35px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.navBarLogo {
+		animation: navBarLogo-spin infinite 5s alternate-reverse;
+	}
+}
+
+
+@keyframes navBarLogo-spin {
+	from {
+		transform: rotate(45deg);
+	}
+	to {
+		transform: rotate(-45deg);
+	}
+}
+
+.itemsCarrito {
+	width: fit-content;
+	height: fit-content;
+	padding: 0px 3px;
+	border-radius: 40%;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	color: green;
+	background-color: aliceblue;
+}

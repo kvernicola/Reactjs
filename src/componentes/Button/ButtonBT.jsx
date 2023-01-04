@@ -1,4 +1,29 @@
+import { useState } from "react";
+import "./button.css";
+
 export default function ButtonBT(props) {
-	//console.log(props);
-	return <button className="btn btn-outline-success">{props.text}</button>;
+	const [colorState, setColorState] = useState("black");
+	//console.log("--->", colorState);
+
+	let styleButton = {
+		backgroundColor: colorState,
+	};
+
+	function handleClick(e) {
+		e.preventDefault();
+		//console.log("Evento click");
+		setColorState("red")
+	}
+
+	return (
+		<a href={props.href}>
+			<button
+				onClick={handleClick}
+				style={styleButton}
+				className={props.className}
+			>
+				{props.text}
+			</button>
+		</a>
+	);
 }

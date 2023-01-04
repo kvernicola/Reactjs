@@ -2,9 +2,10 @@ import "./navbar.css";
 import NavItemBT from "./NavItemBT";
 import NavItemDropdownBT from "./NavItemDropdownBT";
 import NavItemFormBT from "./NavItemFormBT";
-import imgCarrito from "../imgs/imgCarrito.svg"
+import CartWidget from "../CartWidget/CartWidget";
 
 function NavBarBT() {
+	const menuLinks = []
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container-fluid">
@@ -33,7 +34,9 @@ function NavBarBT() {
 						</NavItemBT>
 					</ul>
 					<NavItemFormBT />
-					<img src={imgCarrito} className="App-logo m-3" alt={imgCarrito} />
+					<CartWidget>
+						10
+					</CartWidget>
 				</div>
 			</div>
 		</nav>

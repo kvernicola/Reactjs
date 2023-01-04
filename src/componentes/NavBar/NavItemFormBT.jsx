@@ -1,15 +1,15 @@
-import ButtonBT from "../Button/ButtonBT";
+import ButtonBuscar from "../Button/ButtonBuscar";
 
-function NavItemFormBT() {
+function NavItemFormBT(props) {
 	return (
 		<form className="d-flex" role="search">
 			<input
-				className="form-control me-2"
+				className="form-control me-3"
 				type="Buscar"
 				placeholder="Buscar"
 				aria-label="Buscar"
 			></input>
-			<ButtonBT text="Buscar" />
+			<ButtonBuscar text="Buscar" className="btn btn-outline-success me-3"/>
 		</form>
 	);
 }
