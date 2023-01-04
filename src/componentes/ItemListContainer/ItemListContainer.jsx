@@ -61,10 +61,10 @@ function ItemListContainer() {
 
 	return (
 		<Flex>
-			{Productos.map((cadaProducto) => {
+			{Productos.map((itemProducto) => {
 				return (
 					<Card
-						producto={cadaProducto} key={cadaProducto.id}
+						producto={itemProducto} key={itemProducto.id}
 					/>
 				);
 			})}

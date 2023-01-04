@@ -5,7 +5,6 @@ import NavItemFormBT from "./NavItemFormBT";
 import CartWidget from "../CartWidget/CartWidget";
 
 function NavBarBT() {
-	const menuLinks = []
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container-fluid">
