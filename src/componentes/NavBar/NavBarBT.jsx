@@ -5,6 +5,29 @@ import NavItemFormBT from "./NavItemFormBT";
 import CartWidget from "../CartWidget/CartWidget";
 
 function NavBarBT() {
+	const navLinks = [
+		{
+			id: 1,
+			title: "Historia",
+			url: "/historia",
+			classLi: "nav-item",
+			classA: "nav-link",
+		},
+		{
+			id: 2,
+			title: "Contacto",
+			url: "/contacto",
+			classLi: "nav-item",
+			classA: "nav-link",
+		},
+		/* {
+			id: 3,
+			title: "Login",
+			url: "/login",
+			classLi: "nav-item",
+			classA: "nav-link",
+		}, */
+	];
 	return (
 		<nav className="navbar navbar-expand-lg">
 			<div className="container-fluid">
@@ -25,17 +48,15 @@ function NavBarBT() {
 							</a>
 							<NavItemDropdownBT />
 						</li>
-						<NavItemBT classNameLi="nav-item" classNameA="nav-link" href="/historia">
-							Historia
-						</NavItemBT>
-						<NavItemBT classNameLi="nav-item" classNameA="nav-link" href="/contacto">
-							Contacto
-						</NavItemBT>
+						{navLinks.map((itemNavLinks) => {
+							console.log(itemNavLinks);
+							return (
+								<NavItemBT itemNavLink={itemNavLinks} key={itemNavLinks.id} />
+							);
+						})}
 					</ul>
 					<NavItemFormBT />
-					<CartWidget>
-						10
-					</CartWidget>
+					<CartWidget>10</CartWidget>
 				</div>
 			</div>
 		</nav>
@@ -43,3 +64,12 @@ function NavBarBT() {
 }
 
 export default NavBarBT;
+
+{
+	/* 					<NavItemBT classNameLi="nav-item" classNameA="nav-link" href="/historia">
+							Historia
+						</NavItemBT>
+						<NavItemBT classNameLi="nav-item" classNameA="nav-link" href="/contacto">
+							Contacto
+						</NavItemBT> */
+}

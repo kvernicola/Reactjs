@@ -1,18 +1,16 @@
 import NavItemBT from "./NavItemBT";
 
 function NavItemDropdownBT() {
-
 	return (
 		<ul className="dropdown-menu">
-			<NavItemBT classNameA="dropdown-item" href="/pasteleria">
+			<a className="dropdown-item" href="/pasteleria">
 				Pastelería
-			</NavItemBT>
-			<NavItemBT classNameA="dropdown-item" href="/panaderia">
+			</a>
+			<a className="dropdown-item" href="/panaderia">
 				Panadería
-			</NavItemBT>
+			</a>
 		</ul>
 	);
-};
+}
 
 export default NavItemDropdownBT;
-
