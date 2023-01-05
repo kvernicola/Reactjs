@@ -1,5 +1,3 @@
-//modificar con props y destructurar props.xxxx
-
 function NavItemBT(props) {
 	const {id, title, url, classLi, classA} = props.itemNavLink;
 	
@@ -9,15 +7,5 @@ function NavItemBT(props) {
 		</li>
 	);
 }
-
-/* const NavItemBT = ({ classNameLi, classNameA, href, children }) => {
-
-
-	return (
-		<li className={classNameLi}>
-			<a className={classNameA} href={href}>{children}</a>
-		</li>
-	);
-}; */
 
 export default NavItemBT;

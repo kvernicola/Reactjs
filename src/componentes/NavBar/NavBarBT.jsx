@@ -65,11 +65,4 @@ function NavBarBT() {
 
 export default NavBarBT;
 
-{
-	/* 					<NavItemBT classNameLi="nav-item" classNameA="nav-link" href="/historia">
-							Historia
-						</NavItemBT>
-						<NavItemBT classNameLi="nav-item" classNameA="nav-link" href="/contacto">
-							Contacto
-						</NavItemBT> */
-}
+

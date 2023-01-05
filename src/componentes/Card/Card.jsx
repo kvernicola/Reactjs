@@ -32,6 +32,3 @@ function Card(props) {
 
 export default Card;
 
-/* const Card = ({ nombre, img, precio, descripcion, stock }) => {
-
-}; */

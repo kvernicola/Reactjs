@@ -74,41 +74,4 @@ function ItemListContainer() {
 
 export default ItemListContainer;
 
-{
-	/* <Card
-nombre={Productos[0].nombre}
-//nombre={item1.nombre}
-precio={item1.precio}
-descripcion={item1.descripcion}
-img={imgCheeseFrutilla}
-stock={item1.stock}
-/>
-<Card
-nombre={item2.nombre}
-precio={item2.precio}
-descripcion={item2.descripcion}
-img={imgCheeseFR}
-stock={item2.stock}
-/>
-<Card
-nombre={item3.nombre}
-precio={item3.precio}
-descripcion={item3.descripcion}
-img={imgCheeseOreo}
-stock={item3.stock}
-/>
-<Card
-nombre={item3.nombre}
-precio={item3.precio}
-descripcion={item3.descripcion}
-img={imgCheeseOreo}
-stock={item3.stock}
-/>
-<Card
-						nombre={cadaProducto.nombre}
-						precio={cadaProducto.precio}
-						descripcion={cadaProducto.descripcion}
-						imagen={cadaProducto.imagen}
-						stock={cadaProducto.stock}
-					/> */
-}
+
