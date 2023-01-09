@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./button.css";
 
-export default function ButtonBT(props) {
+export default function Button(props) {
 	const [colorState, setColorState] = useState("black");
 	//console.log("--->", colorState);
 

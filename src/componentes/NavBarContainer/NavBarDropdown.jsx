@@ -1,6 +1,4 @@
-import NavItemBT from "./NavItemBT";
-
-function NavItemDropdownBT() {
+function NavBarDropdown() {
 	return (
 		<ul className="dropdown-menu">
 			<a className="dropdown-item" href="/pasteleria">
@@ -13,4 +11,4 @@ function NavItemDropdownBT() {
 	);
 }
 
-export default NavItemDropdownBT;
+export default NavBarDropdown;

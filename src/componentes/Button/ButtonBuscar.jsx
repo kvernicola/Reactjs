@@ -2,9 +2,7 @@ import React from "react";
 import "./button.css";
 
 export default function ButtonBuscar(props) {
-	//console.log(props);
 	const styleButton = {
-		//padding: props.padding,
 		backgroundColor: props.color,
 	};
 

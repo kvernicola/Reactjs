@@ -1,11 +1,12 @@
 import "./card.css";
 import { useState } from "react";
-import ButtonBT from "../Button/ButtonBT";
-import ItemCounter from "../ItemCounter/ItemCounter";
+import ItemCounter from "../../ItemCounter/ItemCounter";
+import Button from "../../Button/Button";
 
-function Card(props) {
-	const [texto, setTexto] = useState("");
-	const { id, nombre, imagen, precio, descripcion, stock } = props.producto;
+
+function ItemDetailContainer(props) {
+    const [texto, setTexto] = useState("");
+	const { nombre, imagen, precio, descripcion, stock } = props.producto;
 
 	function handleClickCard() {
 		setTexto("Agregado a favoritos");
@@ -19,7 +20,7 @@ function Card(props) {
 				<p className="card-text">{descripcion}</p>
 				<h5>$ {precio}</h5>
 				<ItemCounter stock={stock} />
-				<ButtonBT
+				<Button
 					text="Comprar"
 					href="/comprar"
 					className="btn btn-outline-success"
@@ -30,5 +31,4 @@ function Card(props) {
 	);
 }
 
-export default Card;
-
+export default ItemDetailContainer;

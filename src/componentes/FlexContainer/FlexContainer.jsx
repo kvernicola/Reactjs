@@ -1,7 +1,7 @@
 import "./flex.css";
 
-function Flex(props) {
+function FlexContainer(props) {
 	return <div className="flexContainer">{props.children}</div>;
 }
 
-export default Flex;
+export default FlexContainer;

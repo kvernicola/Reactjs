@@ -1,6 +1,6 @@
 import ButtonBuscar from "../Button/ButtonBuscar";
 
-function NavItemFormBT(props) {
+function NavBarForm() {
 	return (
 		<form className="d-flex" role="search">
 			<input
@@ -14,4 +14,4 @@ function NavItemFormBT(props) {
 	);
 }
 
-export default NavItemFormBT;
+export default NavBarForm;

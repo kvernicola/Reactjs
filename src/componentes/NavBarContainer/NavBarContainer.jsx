@@ -1,11 +1,11 @@
 import "./navbar.css";
-import NavItemBT from "./NavItemBT";
-import NavItemDropdownBT from "./NavItemDropdownBT";
-import NavItemFormBT from "./NavItemFormBT";
+import NavBarDropdown from "./NavBarDropdown";
+import NavBar from "./NavBar";
+import NavBarForm from "./NavBarForm";
 import CartWidget from "../CartWidget/CartWidget";
 
-function NavBarBT() {
-	const navLinks = [
+function NavBarContainer() {
+	const navBarLinks = [
 		{
 			id: 1,
 			title: "Historia",
@@ -46,16 +46,13 @@ function NavBarBT() {
 							>
 								Productos
 							</a>
-							<NavItemDropdownBT />
+							<NavBarDropdown />
 						</li>
-						{navLinks.map((itemNavLinks) => {
-							console.log(itemNavLinks);
-							return (
-								<NavItemBT itemNavLink={itemNavLinks} key={itemNavLinks.id} />
-							);
+						{navBarLinks.map((navBarLink) => {
+							return <NavBar navLinks={navBarLink} key={navBarLink.title} />;
 						})}
 					</ul>
-					<NavItemFormBT />
+					<NavBarForm />
 					<CartWidget>10</CartWidget>
 				</div>
 			</div>
@@ -63,6 +60,4 @@ function NavBarBT() {
 	);
 }
 
-export default NavBarBT;
-
-
+export default NavBarContainer;
