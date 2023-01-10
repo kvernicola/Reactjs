@@ -3,7 +3,6 @@ import "./button.css";
 
 export default function Button(props) {
 	const [colorState, setColorState] = useState("black");
-	//console.log("--->", colorState);
 
 	let styleButton = {
 		backgroundColor: colorState,
@@ -11,8 +10,7 @@ export default function Button(props) {
 
 	function handleClick(e) {
 		e.preventDefault();
-		//console.log("Evento click");
-		setColorState("red")
+		setColorState("red");
 	}
 
 	return (

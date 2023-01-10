@@ -4,11 +4,12 @@ import ItemList from "./ItemList";
 //--------------------------------------------------------
 
 function ItemListContainer() {
-	
 	return (
-		<FlexContainer>
-			<ItemList />
-		</FlexContainer>
+		<main>
+			<FlexContainer>
+				<ItemList />
+			</FlexContainer>
+		</main>
 	);
 }
 

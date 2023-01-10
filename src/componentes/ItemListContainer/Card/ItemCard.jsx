@@ -4,21 +4,19 @@ import Button from "../../Button/Button";
 
 
 function ItemCard(props) {
-	const [texto, setTexto] = useState("");
-	const { nombre, imagen, precio, descripcion, stock } = props.producto;
+	const [text, setText] = useState("");
+	const { name, image, price, description, stock } = props.producto;
 
 	function handleClickCard() {
-		setTexto("Agregado a favoritos");
+		setText("Agregado a favoritos");
 	}
 	return (
 		<div onClick={handleClickCard} className="cardStyle mt-3">
-			<img src={imagen} className="card-img-top" alt={nombre} />
-			<div className="favorito">{texto}</div>
+			<img src={image} className="card-img-top imgCard" alt={name} />
+			<div className="favorito">{text}</div>
 			<div className="card-body">
-				<h4 className="card-title mb-3">{nombre}</h4>
-				
-				<h5 className="mb-3">$ {precio}</h5>
-				
+				<h4 className="card-title mb-3">{name}</h4>
+				<h5 className="mb-3">$ {price}</h5>
 				<Button
 					text="Comprar"
 					href="/comprar"

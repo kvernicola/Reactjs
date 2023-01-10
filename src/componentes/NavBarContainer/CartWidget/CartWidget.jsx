@@ -1,13 +1,13 @@
-import "./cartwidget.css";
-import imgCarrito from "../imgs/imgCarrito.svg";
-
+import "../CartWidget/cartwidget.css";
+import imgCarrito from "../../imgs/imgCarrito.svg";
+import { Link } from "react-router-dom";
 
 function CartWidget(props) {
 	return (
-		<div>
+		<Link to={"/cart"}>
 			<img src={imgCarrito} className="navBarLogo m-3" alt={imgCarrito} />
 			<div className="itemsCarrito">{props.children}</div>
-		</div>
+		</Link>
 	);
 }
 

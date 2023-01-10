@@ -1,8 +1,9 @@
 import "./navbar.css";
 import NavBarDropdown from "./NavBarDropdown";
-import NavBar from "./NavBar";
+import ItemNavBar from "./ItemNavBar";
 import NavBarForm from "./NavBarForm";
-import CartWidget from "../CartWidget/CartWidget";
+import CartWidget from "./CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 function NavBarContainer() {
 	const navBarLinks = [
@@ -20,43 +21,45 @@ function NavBarContainer() {
 			classLi: "nav-item",
 			classA: "nav-link",
 		},
-		/* {
+		{
 			id: 3,
-			title: "Login",
-			url: "/login",
+			title: "Detalle",
+			url: "/detail",
 			classLi: "nav-item",
 			classA: "nav-link",
-		}, */
+		},
 	];
 	return (
-		<nav className="navbar navbar-expand-lg">
-			<div className="container-fluid">
-				<a className="navbar-brand me-5 logoName" href="/">
-					Sweetvelvet <br /> By Paula
-				</a>
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-						<li className="nav-item dropdown">
-							<a
-								className="nav-link dropdown-toggle"
-								href="/"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false"
-							>
-								Productos
-							</a>
-							<NavBarDropdown />
-						</li>
-						{navBarLinks.map((navBarLink) => {
-							return <NavBar navLinks={navBarLink} key={navBarLink.title} />;
-						})}
-					</ul>
-					<NavBarForm />
-					<CartWidget>10</CartWidget>
+		<header className="App-header">
+			<nav className="navbar navbar-expand-lg">
+				<div className="container-fluid">
+					<Link className="navbar-brand me-5 logoName" to={"/"}>
+						Sweetvelvet <br /> By Paula
+					</Link>
+					<div className="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+							<li className="nav-item dropdown">
+								<Link
+									className="nav-link dropdown-toggle"
+									to={"/"}
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+								>
+									Productos
+								</Link>
+								<NavBarDropdown />
+							</li>
+							{navBarLinks.map((navBarLink) => {
+								return <ItemNavBar navLinks={navBarLink} key={navBarLink.title} />;
+							})}
+						</ul>
+						<NavBarForm />
+						<CartWidget>10</CartWidget>
+					</div>
 				</div>
-			</div>
-		</nav>
+			</nav>
+		</header>
 	);
 }
 

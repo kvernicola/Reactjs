@@ -35,6 +35,4 @@ export default function ItemCounter(props) {
 	);
 }
 
-/* useEffect(() => {
-		console.log(counter);
-	}, []); */
+
