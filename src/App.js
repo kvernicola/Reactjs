@@ -10,7 +10,7 @@ function App() {
 			<BrowserRouter>
 				<NavBarContainer />
 				<Routes>
-					<Route path="/" element={<ItemListContainer />} />
+					<Route path="/" element={<h1>HomePage SweetVelvet</h1>} />
 					<Route
 						path="/historia"
 						element={
@@ -27,10 +27,10 @@ function App() {
 							</div>
 						}
 					/>
-					<Route path="/pasteleria" element={<ItemListContainer />} />
-					<Route path="/panaderia" element={<ItemListContainer />} />
-					<Route path="/detail" element={<ItemDetailContainer />} />
-					<Route path="/cart" element={<h1>Falta hacer el carrito</h1>} />
+					<Route path="/productos" element={<ItemListContainer />} />
+					<Route path="/categoria/:category_id" element={<ItemListContainer />} />
+					<Route path="/detalle/:product_id" element={<ItemDetailContainer />} />
+					<Route path="/carrito" element={<h1>Falta hacer el carrito</h1>} />
 					<Route path="*" element={<h1>Page not found</h1>} />
 				</Routes>
 			</BrowserRouter>

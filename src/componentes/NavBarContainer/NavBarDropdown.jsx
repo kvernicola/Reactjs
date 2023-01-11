@@ -1,12 +1,17 @@
+import { Link } from "react-router-dom";
+
 function NavBarDropdown() {
 	return (
 		<ul className="dropdown-menu" style={{margin: 0}}>
-			<a className="dropdown-item" href="/pasteleria">
+			<Link className="dropdown-item" to={"/productos"}>
+				Todos los Productos
+			</Link>
+			<Link className="dropdown-item" to={"/categoria/pasteleria"}>
 				Pastelería
-			</a>
-			<a className="dropdown-item" href="/panaderia">
+			</Link>
+			<Link className="dropdown-item" to={"/categoria/panaderia"}>
 				Panadería
-			</a>
+			</Link>
 		</ul>
 	);
 }

@@ -7,7 +7,7 @@ function ItemDetail(props) {
 	const { name, image, price, description, stock } = props.producto;
 
 	function handleClickCard() {
-		setCart("Agregaste al carrito");
+		setCart(`Agregaste ${name} al carrito`);
 	}
   return (
     <div onClick={handleClickCard} className="cardStyleDetail mb-3">
@@ -19,8 +19,8 @@ function ItemDetail(props) {
         <h5 className="mb-3">$ {price}</h5>
         <ItemCounter stock={stock}/>
         <Button
-            text="Comprar"
-            href="/comprar"
+            text="Añadir al carrito"
+            href="/carrito"
             className="btn btn-outline-success"
             color="black"
         />

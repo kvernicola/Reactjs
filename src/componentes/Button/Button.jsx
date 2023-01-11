@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./button.css";
 
 export default function Button(props) {
@@ -13,15 +14,17 @@ export default function Button(props) {
 		setColorState("red");
 	}
 
+	
 	return (
-		<a href={props.href}>
+		<Link to={props.href}>
 			<button
-				onClick={handleClick}
+				/* onClick={props.clickDetalle} */
+				/* onClick={handleClick} */
 				style={styleButton}
 				className={props.className}
 			>
 				{props.text}
 			</button>
-		</a>
+		</Link>
 	);
 }

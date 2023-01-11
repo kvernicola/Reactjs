@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./button.css";
 
 export default function ButtonBuscar(props) {
@@ -12,10 +13,10 @@ export default function ButtonBuscar(props) {
 	}
 
 	return (
-		<a href={props.href}>
+		<Link to={props.href}>
 			<button onClick={handleClick} style={styleButton} className={props.className}>
 				{props.text}
 			</button>
-		</a>
+		</Link>
 	);
 }

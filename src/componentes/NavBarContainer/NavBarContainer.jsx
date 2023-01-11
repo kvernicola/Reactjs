@@ -21,13 +21,13 @@ function NavBarContainer() {
 			classLi: "nav-item",
 			classA: "nav-link",
 		},
-		{
+		/* {
 			id: 3,
 			title: "Detalle",
-			url: "/detail",
+			url: "/detalle",
 			classLi: "nav-item",
 			classA: "nav-link",
-		},
+		}, */
 	];
 	return (
 		<header className="App-header">

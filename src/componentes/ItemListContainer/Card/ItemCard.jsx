@@ -1,11 +1,11 @@
 import "./card.css";
 import { useState } from "react";
 import Button from "../../Button/Button";
-
+import { Link } from "react-router-dom";
 
 function ItemCard(props) {
 	const [text, setText] = useState("");
-	const { name, image, price, description, stock } = props.producto;
+	const { name, image, price, id } = props.producto;
 
 	function handleClickCard() {
 		setText("Agregado a favoritos");
@@ -18,8 +18,9 @@ function ItemCard(props) {
 				<h4 className="card-title mb-3">{name}</h4>
 				<h5 className="mb-3">$ {price}</h5>
 				<Button
-					text="Comprar"
-					href="/comprar"
+					/* clickDetalle={() => <Link to={`/detalle/${id}`} />} */
+					text="Detalle"
+					href={`/detalle/${id}`}
 					className="btn btn-outline-success"
 					color="black"
 				/>
