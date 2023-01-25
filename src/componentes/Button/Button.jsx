@@ -3,27 +3,26 @@ import { Link } from "react-router-dom";
 import "./button.css";
 
 export default function Button(props) {
-	const [colorState, setColorState] = useState("black");
+	const colorBtn = props.color
+	const [colorState, setColorState] = useState(colorBtn);
 
 	let styleButton = {
 		backgroundColor: colorState,
 	};
 
-	function handleClick(e) {
+	/* function handleClick(e) {
 		e.preventDefault();
 		setColorState("red");
-	}
+	} */
 
-	
 	return (
 		<Link to={props.href}>
 			<button
-				/* onClick={props.clickDetalle} */
-				/* onClick={handleClick} */
+				onClick={props.onClick}
 				style={styleButton}
 				className={props.className}
 			>
-				{props.text}
+				{props.children}
 			</button>
 		</Link>
 	);

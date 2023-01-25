@@ -3,9 +3,12 @@ import NavBarDropdown from "./NavBarDropdown";
 import ItemNavBar from "./ItemNavBar";
 import NavBarForm from "./NavBarForm";
 import CartWidget from "./CartWidget/CartWidget";
+import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import { cartContext } from "../../storage/cartContext";
+import { useContext } from "react";
 
-function NavBarContainer() {
+function NavBarContainer(props) {
 	const navBarLinks = [
 		{
 			id: 1,
@@ -29,6 +32,18 @@ function NavBarContainer() {
 			classA: "nav-link",
 		}, */
 	];
+	const context = useContext(cartContext)
+	console.log("------>", context);
+
+/* function handleSubmit(evt) {
+	evt.preventDefault();
+	let user = evt.target[0].value;
+	props.onLogin(user);
+	
+	console.log(evt);
+	console.log(evt.target[0].value);
+} */
+
 	return (
 		<header className="App-header">
 			<nav className="navbar navbar-expand-lg">
@@ -55,7 +70,15 @@ function NavBarContainer() {
 							})}
 						</ul>
 						<NavBarForm />
-						<CartWidget>10</CartWidget>
+						<Button onClick={props.onLogout} className={"btn btn-danger"}>
+							Log out: {context.user}
+						</Button>
+						{/* <form onSubmit={handleSubmit}>
+							Iniciar sesion
+							<input name="user" />
+						</form> */}
+						<CartWidget>{context.inCart.length}</CartWidget>
+						{/* cambiar cantidad de objetos por cantidad de productos */}
 					</div>
 				</div>
 			</nav>

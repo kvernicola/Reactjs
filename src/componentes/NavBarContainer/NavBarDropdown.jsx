@@ -6,11 +6,14 @@ function NavBarDropdown() {
 			<Link className="dropdown-item" to={"/productos"}>
 				Todos los Productos
 			</Link>
-			<Link className="dropdown-item" to={"/categoria/pasteleria"}>
-				Pastelería
+			<Link className="dropdown-item" to={"/categoria/Cheesecake"}>
+				CheeseCakes
 			</Link>
-			<Link className="dropdown-item" to={"/categoria/panaderia"}>
-				Panadería
+			<Link className="dropdown-item" to={"/categoria/Lingotes"}>
+				Lingotes
+			</Link>
+			<Link className="dropdown-item" to={"/categoria/Tortas"}>
+				Tortas
 			</Link>
 		</ul>
 	);
