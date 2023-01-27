@@ -16,12 +16,10 @@ function ItemDetail(props) {
 	function handleOnAddToCart(count) {
 		product.count = count;
 		addToCart(product, count);
-		//context.inCart.push(props.product);
-		//context.addToCart(product, count);
 		setProductItem(count);
 
 		//console.log("Copia de array en el context-->", productItem);
-		console.log(`Agregaste ${count} ${category} ${name} al carrito`);
+		//console.log(`Agregaste ${count} ${category} ${name} al carrito`);
 	}
 
 	return (

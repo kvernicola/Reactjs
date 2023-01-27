@@ -32,17 +32,22 @@ function NavBarContainer(props) {
 			classA: "nav-link",
 		}, */
 	];
-	const context = useContext(cartContext)
-	console.log("------>", context);
-
-/* function handleSubmit(evt) {
-	evt.preventDefault();
-	let user = evt.target[0].value;
-	props.onLogin(user);
+	//const context = useContext(cartContext);
+	const { user, inCart, } = useContext(cartContext);
 	
-	console.log(evt);
-	console.log(evt.target[0].value);
-} */
+	// El inCart.length no va, hay que hacer  la suma de la cantidad de items
+	if (inCart.length === 0) {
+		console.log("No hay items en el carrito");
+	} else {
+		console.log("Elementos en el carrito------>", inCart);
+    }
+	
+	function handleSubmit(evt) {
+		evt.preventDefault();
+		let user = evt.target.form[0].value;
+		props.onLogin(user);
+		console.log(evt.target.form[0].value);
+	}
 
 	return (
 		<header className="App-header">
@@ -66,19 +71,21 @@ function NavBarContainer(props) {
 								<NavBarDropdown />
 							</li>
 							{navBarLinks.map((navBarLink) => {
-								return <ItemNavBar navLinks={navBarLink} key={navBarLink.title} />;
+								return (
+									<ItemNavBar navLinks={navBarLink} key={navBarLink.title} />
+								);
 							})}
 						</ul>
-						<NavBarForm />
+						<NavBarForm onSubmit={handleSubmit} />
 						<Button onClick={props.onLogout} className={"btn btn-danger"}>
-							Log out: {context.user}
+							Log out: {user}
 						</Button>
+						{/* cambiar cantidad de objetos por cantidad de productos */}
+						<CartWidget></CartWidget>
 						{/* <form onSubmit={handleSubmit}>
 							Iniciar sesion
 							<input name="user" />
 						</form> */}
-						<CartWidget>{context.inCart.length}</CartWidget>
-						{/* cambiar cantidad de objetos por cantidad de productos */}
 					</div>
 				</div>
 			</nav>
@@ -87,3 +94,15 @@ function NavBarContainer(props) {
 }
 
 export default NavBarContainer;
+
+// 0 + 1 + 2 + 3 + 4
+
+/* const array1 = [1, 2, 3, 4];
+const initialValue = 0;
+const sumWithInitial = array1.reduce(
+	(accumulator, currentValue) => accumulator + currentValue,
+	initialValue
+);
+console.log(sumWithInitial); */
+
+// Expected output: 10

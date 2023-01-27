@@ -5,11 +5,12 @@ import { useContext } from "react";
 import { cartContext } from "../../../storage/cartContext";
 
 function CartWidget(props) {
-	const context = useContext(cartContext)
+	const { inCart, getTotalItemsInCart, getTotalPrice } = useContext(cartContext);
+	
 	return (
 		<Link to={"/carrito"}>
 			<img src={imgCarrito} className="navBarLogo m-3" alt={imgCarrito} />
-			<div className="itemsCarrito">{props.children}</div>
+			<div className="itemsCarrito">Producto/s: {inCart.length} Cant: {getTotalItemsInCart()} Total: ${getTotalPrice()}</div>
 		</Link>
 	);
 }
