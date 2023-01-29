@@ -3,10 +3,8 @@ import NavBarDropdown from "./NavBarDropdown";
 import ItemNavBar from "./ItemNavBar";
 import NavBarForm from "./NavBarForm";
 import CartWidget from "./CartWidget/CartWidget";
-import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-import { cartContext } from "../../storage/cartContext";
-import { useContext } from "react";
+
 
 function NavBarContainer(props) {
 	const navBarLinks = [
@@ -32,23 +30,13 @@ function NavBarContainer(props) {
 			classA: "nav-link",
 		}, */
 	];
-	//const context = useContext(cartContext);
-	const { user, inCart, } = useContext(cartContext);
-	
-	// El inCart.length no va, hay que hacer  la suma de la cantidad de items
-	if (inCart.length === 0) {
-		console.log("No hay items en el carrito");
-	} else {
-		console.log("Elementos en el carrito------>", inCart);
-    }
-	
+
 	function handleSubmit(evt) {
 		evt.preventDefault();
-		let user = evt.target.form[0].value;
-		props.onLogin(user);
+		let text = evt.target.form[0].value;
+		props.onFind(text);
 		console.log(evt.target.form[0].value);
 	}
-
 	return (
 		<header className="App-header">
 			<nav className="navbar navbar-expand-lg">
@@ -77,15 +65,7 @@ function NavBarContainer(props) {
 							})}
 						</ul>
 						<NavBarForm onSubmit={handleSubmit} />
-						<Button onClick={props.onLogout} className={"btn btn-danger"}>
-							Log out: {user}
-						</Button>
-						{/* cambiar cantidad de objetos por cantidad de productos */}
 						<CartWidget></CartWidget>
-						{/* <form onSubmit={handleSubmit}>
-							Iniciar sesion
-							<input name="user" />
-						</form> */}
 					</div>
 				</div>
 			</nav>
@@ -94,15 +74,3 @@ function NavBarContainer(props) {
 }
 
 export default NavBarContainer;
-
-// 0 + 1 + 2 + 3 + 4
-
-/* const array1 = [1, 2, 3, 4];
-const initialValue = 0;
-const sumWithInitial = array1.reduce(
-	(accumulator, currentValue) => accumulator + currentValue,
-	initialValue
-);
-console.log(sumWithInitial); */
-
-// Expected output: 10

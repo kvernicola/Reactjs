@@ -1,4 +1,6 @@
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import NavBarContainer from "./componentes/NavBarContainer/NavBarContainer";
 import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -7,20 +9,18 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { CartProvider } from "./storage/cartContext";
 import HomePage from "./pages/HomePage";
 import Form from "./componentes/Forms/Form";
+import { Cart } from "./componentes/NavBarContainer/CartWidget/CartWidget";
 
 function App() {
-	function logOutSessions() {
-		console.log("logout");
-	}
-	function logInSessions(username) {
-		alert(`Bienvenido el usuario... ${username}`);
+	function find(param) {
+		alert(`No!, por ahi no vas a encontrar... ${param} por ahora`);
 	}
 
 	return (
 		<div className="App">
 			<BrowserRouter>
 				<CartProvider>
-					<NavBarContainer onLogin={logInSessions} onLogout={logOutSessions} />
+					<NavBarContainer onFind={find} />
 					<Routes>
 						<Route path="/" element={<Form />} />
 						<Route
@@ -48,9 +48,10 @@ function App() {
 							path="/detalle/:product_id"
 							element={<ItemDetailContainer />}
 						/>
-						<Route path="/carrito" element={<h1>Falta hacer el carrito</h1>} />
+						<Route path="/carrito" element={<Cart />} />
 						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
+					<ToastContainer />
 				</CartProvider>
 			</BrowserRouter>
 		</div>

@@ -6,7 +6,7 @@ import ItemList from "./ItemList";
 function ItemListContainer() {
 	return (
 		<main>
-			<FlexContainer>
+			<FlexContainer className="flexContainer">
 				<ItemList />
 			</FlexContainer>
 		</main>

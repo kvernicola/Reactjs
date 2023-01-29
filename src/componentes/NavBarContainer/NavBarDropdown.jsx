@@ -9,10 +9,10 @@ function NavBarDropdown() {
 			<Link className="dropdown-item" to={"/categoria/Cheesecake"}>
 				CheeseCakes
 			</Link>
-			<Link className="dropdown-item" to={"/categoria/Lingotes"}>
+			<Link className="dropdown-item" to={"/categoria/Lingote"}>
 				Lingotes
 			</Link>
-			<Link className="dropdown-item" to={"/categoria/Tortas"}>
+			<Link className="dropdown-item" to={"/categoria/Torta"}>
 				Tortas
 			</Link>
 		</ul>

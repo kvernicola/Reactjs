@@ -1,31 +1,30 @@
 import { useState } from "react";
 import ItemCounter from "../ItemCounter/ItemCounter";
-import Button from "../Button/Button";
 import { useContext } from "react";
 import { cartContext } from "../../storage/cartContext";
 
-
 function ItemDetail(props) {
 	const { name, image, price, description, stock, category } = props.product;
-	const [productItem, setProductItem] = useState(0);
-
-	const {addToCart} = useContext(cartContext);
-
 	const product = props.product;
+	const { addToCart } = useContext(cartContext);
 
-	function handleOnAddToCart(count) {
-		product.count = count;
-		addToCart(product, count);
-		setProductItem(count);
+	const [newQuantity, setNewQuantity] = useState(0);
 
-		//console.log("Copia de array en el context-->", productItem);
-		//console.log(`Agregaste ${count} ${category} ${name} al carrito`);
+	function handleOnAddToCart(quantity) {
+		product.quantity = quantity;
+		//console.log(`Recibe cantidad: ${product.quantity} de itemCounter`);
+		setNewQuantity(quantity);
+		addToCart(product);
+		//console.log(product);
+
+		//console.log(`Agregaste ${newQuantity} ${category} ${name} al carrito`);
 	}
+	//console.log(`Estado newQuantity ${newQuantity}`);
 
 	return (
 		<div className="cardStyleDetail mb-3">
 			<img src={image} className="card-img-top imgDetail" alt={name} />
-			<div className="favorito">{productItem}</div>
+			<div className="favorito">{newQuantity}</div>
 			<div className="card-body">
 				<h4 className="card-titleDetail">{name}</h4>
 				<span className="card-titleDetail">{category}</span>

@@ -1,63 +1,91 @@
+import React from "react";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const cartContext = createContext({});
 
+/* Swal.fire({
+				title: "Success",
+				text: "El producto fue agregado al carrito",
+				icon: "success",
+				confirmButtonText: "ok",
+			}); */
+
+function toastNofify(mensaje, type) {
+	switch (type) {
+		case "info":
+			toast.info(mensaje, {
+				position: toast.POSITION.BOTTOM_RIGHT,
+			});
+			break;
+		case "error":
+			toast.error(mensaje, {
+				position: toast.POSITION.BOTTOM_RIGHT,
+			});
+			break;
+		case "warn":
+			toast.warn(mensaje, {
+				position: toast.POSITION.BOTTOM_RIGHT,
+			});
+			break;
+		default:
+			toast.success(mensaje, {
+				position: toast.POSITION.BOTTOM_RIGHT,
+			});
+	}
+}
+
 function CartProvider(props) {
 	const [inCart, setInCart] = useState([]);
-	const [total, setTotal] = useState(0);
 
 	const addToCart = (product) => {
 		const foundProduct = inCart.findIndex((item) => item.id === product.id);
+		console.log("Encontrado con Index:--->", foundProduct); //retorna la posicion
+
 		if (foundProduct === -1) {
-			console.log("Producto agregado");
-			setInCart([...inCart, product]);
-			/* setInCart(inCart.map((item) => {
-				if (item.id === product.id) {
-					return {...item, quantity: item.quantity + 1 };
-                } else {
-					return item;
-                } */
+			setInCart([...inCart, product]); //agrego el producto al carrito
+			const mensaje = `Agregaste: ${product.quantity} ${product.category} ${product.name} al carrito`;
+			toastNofify(mensaje);
 		} else {
-			console.log(
-				"El producto ya existe en el carrito y no se agrego ni actualizo"
-			);
 		}
-		console.log("Encontrado en la posicion:", foundProduct);
 	};
 
 	function getTotalPrice() {
-		const pricePerQuantity = inCart.map((item) => item.price * item.count);
-		console.log("Subtotal por producto", pricePerQuantity);
+		const pricePerQuantity = inCart.map((item) => item.price * item.quantity);
 		const initialValue = 0;
 		const total = pricePerQuantity.reduce(
 			(acc, priceItem) => acc + priceItem,
 			initialValue
 		);
-		console.log("$", total);
-		return total
+		return total;
 	}
 
 	function getTotalItemsInCart() {
 		const initialValue = 0;
-		const itemsInCart = inCart.map((item) => item.count);
+		const itemsInCart = inCart.map((item) => item.quantity);
 		const totalItems = itemsInCart.reduce(
 			(acc, quantityItem) => acc + quantityItem,
 			initialValue
 		);
-		console.log("TotalItemsInCart", totalItems);
 		return totalItems;
 	}
 
 	const removeFromCart = (product) => {
+		const mensaje = `Eliminaste el producto: ${product.category} ${product.name} del carrito`;
+		const type = "info";
+		toastNofify(mensaje, type);
 		setInCart(inCart.filter((item) => item.id !== product.id));
-		setTotal(total - product.price);
 	};
 
 	const clearCart = () => {
 		setInCart([]);
-		setTotal(0);
-		localStorage.removeItem("inCart");
+		const mensaje = "Vaciaste el carrito";
+		toastNofify(mensaje);
+		//localStorage.removeItem("inCart");
 	};
 
 	/* useEffect(() => {
@@ -71,7 +99,15 @@ function CartProvider(props) {
 
 	return (
 		<cartContext.Provider
-			value={{ inCart, user: "Denise", addToCart, getTotalItemsInCart, getTotalPrice }}
+			value={{
+				inCart,
+				user: "Invitado",
+				addToCart,
+				getTotalItemsInCart,
+				getTotalPrice,
+				removeFromCart,
+				clearCart,
+			}}
 		>
 			{props.children}
 		</cartContext.Provider>

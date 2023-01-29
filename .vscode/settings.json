@@ -1,0 +1,7 @@
+{
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "jetBrains Mono, Consolas, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.cursorStyle": "line",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": false
+}

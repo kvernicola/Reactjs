@@ -30,7 +30,7 @@ function ItemDetailContainer() {
 	
 	return (
 		<main>
-			<FlexContainer>
+			<FlexContainer className="flexContainer">
 				<ItemDetail product={Product} key={Product.id} />
 			</FlexContainer>
 		</main>

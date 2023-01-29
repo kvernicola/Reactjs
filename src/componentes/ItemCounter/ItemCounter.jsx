@@ -16,12 +16,12 @@ export default function ItemCounter(props) {
 	}
 
 	function handleCounterMore() {
-		if (counter != props.stock) {
+		if (counter !== props.stock) {
 			setCounter(counter + 1);
 		}
 	}
 	function handleCounterLess() {
-		if (counter != 1) {
+		if (counter !== 1) {
 			setCounter(counter - 1);
 		}
 	}
