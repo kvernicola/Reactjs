@@ -44,13 +44,21 @@ function CartProvider(props) {
 
 	const addToCart = (product) => {
 		const foundProduct = inCart.findIndex((item) => item.id === product.id);
-		console.log("Encontrado con Index:--->", foundProduct); //retorna la posicion
+		console.log("Producto con Index:--->", foundProduct, inCart); //retorna la posicion
 
 		if (foundProduct === -1) {
 			setInCart([...inCart, product]); //agrego el producto al carrito
 			const mensaje = `Agregaste: ${product.quantity} ${product.category} ${product.name} al carrito`;
 			toastNofify(mensaje);
 		} else {
+			//removeFromCart(product);
+			const updateProduct = [...inCart]
+			updateProduct[foundProduct].quantity += product.quantity
+
+			setInCart(updateProduct);
+			const mensaje = `Actualizaste el producto: ${product.category} ${product.name} en el carrito`;
+			const type = "info"
+			toastNofify(mensaje, type);
 		}
 	};
 

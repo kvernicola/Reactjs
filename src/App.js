@@ -10,10 +10,13 @@ import { CartProvider } from "./storage/cartContext";
 import HomePage from "./pages/HomePage";
 import Form from "./componentes/Forms/Form";
 import { Cart } from "./componentes/NavBarContainer/CartWidget/CartWidget";
+import { getProducts } from "./services/firebase";
+
 
 function App() {
-	function find(param) {
-		alert(`No!, por ahi no vas a encontrar... ${param} por ahora`);
+	getProducts();
+	function find(paramBuscar) {
+		alert(`No!, por ahi no vas a encontrar... ${paramBuscar} por ahora`);
 	}
 
 	return (
@@ -22,7 +25,7 @@ function App() {
 				<CartProvider>
 					<NavBarContainer onFind={find} />
 					<Routes>
-						<Route path="/" element={<Form />} />
+						<Route path="/" element={<HomePage />} />
 						<Route
 							path="/historia"
 							element={
@@ -33,11 +36,7 @@ function App() {
 						/>
 						<Route
 							path="/contacto"
-							element={
-								<div>
-									<h1>En construccion</h1>
-								</div>
-							}
+							element={<Form />}
 						/>
 						<Route path="/productos" element={<ItemListContainer />} />
 						<Route

@@ -35,7 +35,6 @@ export default function ItemCounter(props) {
 				-
 			</Button>
 			<span>Cantidad: {counter}</span>
-
 			<Button
 				onClick={handleCounterMore}
 				color="black"

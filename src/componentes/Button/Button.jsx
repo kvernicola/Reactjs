@@ -21,6 +21,7 @@ export default function Button(props) {
 				onClick={props.onClick}
 				style={styleButton}
 				className={props.className}
+				type={props.type}
 			>
 				{props.children}
 			</button>

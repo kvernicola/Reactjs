@@ -3,17 +3,19 @@ import imgCarrito from "../../imgs/imgCarrito.svg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { cartContext } from "../../../storage/cartContext";
-import ItemCart from "./ItemCart";
+import ItemsCartWidget from "./ItemsCartWidget";
 import FlexContainer from "../../FlexContainer/FlexContainer";
 import Button from "../../Button/Button";
 
 function CartWidget() {
-	const { getTotalItemsInCart } = useContext(cartContext);
+	const { inCart, getTotalItemsInCart } = useContext(cartContext);
 
 	return (
 		<Link to={"/carrito"}>
 			<img src={imgCarrito} className="navBarLogo m-3" alt={imgCarrito} />
-			<div className="itemsCarrito">{getTotalItemsInCart()}</div>
+			{inCart.length !== 0 && (
+				<div className="itemsCarrito">{getTotalItemsInCart()}</div>
+			)}
 		</Link>
 	);
 }
@@ -21,9 +23,13 @@ function CartWidget() {
 function Cart() {
 	const { inCart, getTotalItemsInCart, getTotalPrice, clearCart } =
 		useContext(cartContext);
-	
-	function handleOnClick() {
+
+	function handleClearCart() {
 		clearCart();
+	}
+
+	function handlePurchase() {
+		window.location.href = "/carrito";
 	}
 
 	return (
@@ -47,30 +53,36 @@ function Cart() {
 					</div>
 				</FlexContainer>
 			</FlexContainer>
-			{inCart.map((itemProduct) => {
-				return <ItemCart product={itemProduct} key={itemProduct.id} />;
-			})}
+			<div className="col-12">
+				{inCart.map((itemProduct) => {
+					return <ItemsCartWidget product={itemProduct} key={itemProduct.id} />;
+				})}
+			</div>
+
 			<FlexContainer className="flexContainer">
 				<div className="col-6">
 					{inCart.length === 0 ? (
 						<FlexContainer className="flexContainer">
-							<Button
-								href="/productos"
-								className="btn btn-danger"
-							>
+							<Button href="/productos" className="btn btn-danger">
 								Ver todos los productos
 							</Button>
 						</FlexContainer>
 					) : (
-						<FlexContainer className="flexContainer">
-							<Button className="btn btn-danger" onClick={handleOnClick}>
-								Vaciar Carrito
-							</Button>
-						</FlexContainer>
+						<>
+							<FlexContainer className="flexContainer">
+								<Button href="/productos" className="btn btn-danger">
+									Agregar mas productos
+								</Button>
+								<Button className="btn btn-danger" onClick={handleClearCart}>
+									Vaciar Carrito
+								</Button>
+							</FlexContainer>
+							<FlexContainer className="flexContainer"></FlexContainer>
+						</>
 					)}
 				</div>
 				<div className="col-6">
-					<h4>Total del carrito</h4>
+					<h4>Total del Carrito</h4>
 					<div className="d-flex justify-content-between p-1 pe-5">
 						<h6 className="d-flex justify-content-start">Cant. Productos:</h6>
 						<span className="d-flex justify-content-end">
@@ -78,11 +90,16 @@ function Cart() {
 						</span>
 					</div>
 					<div className="d-flex justify-content-between p-1 pe-5">
-						<h6><strong>Total:</strong></h6>
+						<h6>
+							<strong>Total:</strong>
+						</h6>
 						<strong className="d-flex justify-content-end">
 							$ {getTotalPrice()}
 						</strong>
 					</div>
+					<Button className="btn btn-danger" onClick={handlePurchase}>
+						Finalizar Compra
+					</Button>
 				</div>
 			</FlexContainer>
 		</>

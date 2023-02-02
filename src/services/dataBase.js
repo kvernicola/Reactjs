@@ -5,7 +5,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/ZBrCgR2/Cheese-Frutilla.jpg",
 		price: 920,
 		category: "Cheesecake",
-		description: "Base de biscuit de vainilla, queso crema y mermelada de frutilla.",
+		description:
+			"Base de biscuit de vainilla, queso crema y mermelada de frutilla.",
 		stock: 8,
 	},
 	{
@@ -15,7 +16,7 @@ const ProductsDB = [
 		price: 980,
 		category: "Cheesecake",
 		description: "Base de galletita crocante, queso crema y frutos rojos.",
-		stock: 6,
+		stock: 2,
 	},
 	{
 		id: 3,
@@ -25,6 +26,7 @@ const ProductsDB = [
 		category: "Cheesecake",
 		description: "Base de galletitas oreo, dulce de leche y crema oreo.",
 		stock: 11,
+		discount: 20,
 	},
 	{
 		id: 4,
@@ -33,7 +35,7 @@ const ProductsDB = [
 		price: 920,
 		category: "Cheesecake",
 		description: "Base de galletita crocante, queso crema y frutos rojos.",
-		stock: 8,
+		stock: 2,
 	},
 	{
 		id: 5,
@@ -41,7 +43,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/JxJmH9G/Lingote-Balcarce.jpg",
 		price: 980,
 		category: "Lingote",
-		description: "Pionono, cacao, dulce de leche, nuces, merengue seco y crema chantilly.",
+		description:
+			"Pionono, cacao, dulce de leche, nuces, merengue seco y crema chantilly.",
 		stock: 14,
 	},
 	{
@@ -59,8 +62,10 @@ const ProductsDB = [
 		image: "https://i.ibb.co/5RvkhWr/Lingote-Brownie-Mousse.jpg",
 		price: 960,
 		category: "Lingote",
-		description: "Base brownie, mousse de chocolate con crocante y ganache de chocolate semi amargo.",
+		description:
+			"Base brownie, mousse de chocolate con crocante y ganache de chocolate semi amargo.",
 		stock: 10,
+		discount: 15,
 	},
 	{
 		id: 8,
@@ -68,7 +73,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/vHzLfkN/lingote-Brownie-Nuez.jpg",
 		price: 960,
 		category: "Lingote",
-		description: "Brownie con nuez, copos de dulce de leche e hilos de chocolate.",
+		description:
+			"Brownie con nuez, copos de dulce de leche e hilos de chocolate.",
 		stock: 8,
 	},
 	{
@@ -77,7 +83,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/8zndXY0/Lingote-Carrot-Cake.jpg",
 		price: 970,
 		category: "Lingote",
-		description: "Biscuit humedo a base de zanahoria, pasas de uvas y nueces, con frosting de naranja.",
+		description:
+			"Biscuit humedo a base de zanahoria, pasas de uvas y nueces, con frosting de naranja.",
 		stock: 5,
 	},
 	{
@@ -86,7 +93,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/cFBNQZ8/Lingote-Chaja.jpg",
 		price: 950,
 		category: "Lingote",
-		description: "Biscuit de vainilla, dulce de leche, merengue seco, crema chantilly y duraznos en almibar.",
+		description:
+			"Biscuit de vainilla, dulce de leche, merengue seco, crema chantilly y duraznos en almibar.",
 		stock: 14,
 	},
 	{
@@ -95,7 +103,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/GxpqVW9/Lingote-Chocotorta.jpg",
 		price: 920,
 		category: "Lingote",
-		description: "Capas de galletitas chocolinas humedecidas con cafe intercaladas con crema chocotorta.",
+		description:
+			"Capas de galletitas chocolinas humedecidas con cafe intercaladas con crema chocotorta.",
 		stock: 6,
 	},
 	{
@@ -104,7 +113,8 @@ const ProductsDB = [
 		image: "https://i.ibb.co/LdSSH5v/Lingote-Lemon.jpg",
 		price: 940,
 		category: "Lingote",
-		description: "Base de galletitas crocantes de vainilla, lemon curd y merengue italiano bruleado.",
+		description:
+			"Base de galletitas crocantes de vainilla, lemon curd y merengue italiano bruleado.",
 		stock: 4,
 	},
 	{
@@ -114,7 +124,7 @@ const ProductsDB = [
 		price: 1660,
 		category: "Torta",
 		description: "Base de brownie, dulce de leche y merengue italiano.",
-		stock: 3,
+		stock: 5,
 	},
 	{
 		id: 14,
@@ -123,7 +133,7 @@ const ProductsDB = [
 		price: 1530,
 		category: "Torta",
 		description: "Masa sablee, crema de limon y merengue suizo.",
-		stock: 3,
+		stock: 2,
 	},
 	{
 		id: 15,
@@ -132,7 +142,8 @@ const ProductsDB = [
 		price: 1930,
 		category: "Torta",
 		description: "Base de galletita crocante, queso crema y frutos rojos.",
-		stock: 3,
+		stock: 4,
+		discount: 30,
 	},
 	{
 		id: 16,
@@ -140,8 +151,9 @@ const ProductsDB = [
 		image: "https://i.ibb.co/pbQ49tJ/torta-Rogel.jpg",
 		price: 1830,
 		category: "Torta",
-		description: "Finas capas de masa crocante, dulce de leche y merengue italiano.",
-		stock: 3,
+		description:
+			"Finas capas de masa crocante, dulce de leche y merengue italiano.",
+		stock: 2,
 	},
 ];
 
@@ -152,7 +164,7 @@ function getProducts() {
 		setTimeout(() => {
 			if (error) reject("No se pudo realizar la consulta");
 			else resolve(ProductsDB);
-		}, 1000);
+		}, 2000);
 	});
 }
 
@@ -167,7 +179,7 @@ function getProduct(product_id) {
 		setTimeout(() => {
 			if (!found) reject(`Producto ${product_id} no encontrado`);
 			else resolve(found);
-		}, 1000);
+		}, 2000);
 	});
 }
 

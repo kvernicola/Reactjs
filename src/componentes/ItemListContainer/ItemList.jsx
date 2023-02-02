@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import getProducts, {
-	getProductsByCategory,
-} from "../../services/dataBase";
+//import { getProductsByCategory } from "../../services/dataBase";
+import Loader from "../Loader/Loader";
 import ItemCard from "./Card/ItemCard";
+import { getProducts, getProductsByCategory } from "../../services/firebase";
 
 function ItemList() {
 	const [Products, setProducts] = useState([]);
-	let params = useParams();
+	const [isLoading, setIsLoading] = useState(true);
+
+	let { category_id } = useParams();
 	//console.log(useParams());
 	//console.log("%cRenderizando ItemListContainer", "background-color: blue");
 
 	useEffect(() => {
-		if (!params.category_id) {
+		if (!category_id) {
 			getProducts()
 				.then((resolveDB) => {
 					setProducts(resolveDB);
@@ -20,28 +22,38 @@ function ItemList() {
 				})
 				.catch((rejectDB) => {
 					alert(rejectDB);
+				})
+				.finally(() => {
+					setIsLoading(false);
 				});
 		} else {
-			getProductsByCategory(params.category_id)
+			getProductsByCategory(category_id)
 				.then((resolveDB) => {
 					setProducts(resolveDB);
 					//console.log("Resultado ", resolveDB);
 				})
 				.catch((rejectDB) => {
 					alert(rejectDB);
+				})
+				.finally(() => {
+					setIsLoading(false);
 				});
 		}
 
 		setTimeout(() => {
 			//console.log("Iniciando consulta de productos disponibles");
 		}, 1000);
-	}, [params]);
+	}, [category_id]);
 
 	return (
 		<>
-			{Products.map((itemProduct) => {
-				return <ItemCard product={itemProduct} key={itemProduct.id} />;
-			})}
+			{isLoading ? (
+				<Loader color={"orange"}/>
+			) : (
+				Products.map((itemProduct) => {
+					return <ItemCard product={itemProduct} key={itemProduct.id} />;
+				})
+			)}
 		</>
 	);
 }
