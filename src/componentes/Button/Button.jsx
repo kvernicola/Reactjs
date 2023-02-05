@@ -10,11 +10,6 @@ export default function Button(props) {
 		backgroundColor: colorState,
 	};
 
-	/* function handleClick(e) {
-		e.preventDefault();
-		setColorState("red");
-	} */
-
 	return (
 		<Link to={props.href}>
 			<button

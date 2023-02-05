@@ -29,9 +29,11 @@ function CartSold() {
 						Comprador: {buyer.name} {buyer.lastname}
 					</span>
 					<br />
+					<span>Telefono: {buyer.phone}</span>
+					<br />
 					<span>Email: {buyer.email}</span>
 					<br />
-					<span>Telefono: {buyer.phone}</span>
+                    <span>Direccion: {buyer.address}</span>
 					<br />
 					<span>Producto: {items[0].name}</span>
 					<br />

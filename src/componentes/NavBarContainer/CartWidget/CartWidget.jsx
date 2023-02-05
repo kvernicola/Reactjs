@@ -34,8 +34,9 @@ function Cart() {
 		clearCart();
 	}
 
-	function handlePurchase(evt) {
-		evt.preventDefault();
+	function handleOnPurchase(userData) {
+		//console.log(userData);
+		console.log(userData, userData.name, userData.email);
 		/* const productsInOrder = inCart.map((product) => ({
 			id: product.id,
 			name: product.name,
@@ -55,16 +56,17 @@ function Cart() {
 
 		const order = {
 			buyer: {
-				name: "Andres",
-				lastname: "Giribaldi",
-				email: "amgiribaldi@gmail.com",
-				phone: "116-8823508",
+				name: userData.name,
+				lastname: userData.lastname,
+				email: userData.email,
+				phone: userData.phone,
+				address: userData.address,
 			},
 			items: productsInOrder,
 			total: getTotalPrice(),
 			date: new Date(),
 		};
-		//console.table(order);
+		console.table(order);
 
 		sendOrder(order).then((resolve) => {
 			Swal.fire({
@@ -128,7 +130,7 @@ function Cart() {
 								</Button>
 							</FlexContainer>
 							<FlexContainer className="flexContainer"></FlexContainer>
-							<FormBuyer onClick={handlePurchase} />
+							<FormBuyer onPurchase={handleOnPurchase} />
 						</>
 					)}
 				</div>

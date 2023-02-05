@@ -1,10 +1,11 @@
 import "./formbuyer.css";
-import React from "react";
 import InputForm from "./InputForm";
 import { useState } from "react";
 import FlexContainer from "../FlexContainer/FlexContainer";
+import Button from "../Button/Button";
 
 function FormBuyer(props) {
+	const onPurchase = props.onPurchase;
 	const [userData, setUserData] = useState({
 		name: "",
 		lastname: "",
@@ -71,13 +72,16 @@ function FormBuyer(props) {
 				placeholder="Direccion"
 			/>
 			<FlexContainer>
-				<button
-					className="btn btn-danger btnForm"
-					disabled={formIsValid()}
-					type="submit"
+				{!formIsValid() && (
+				<Button
+					className="btn btn-danger"
+					onClick={()=> onPurchase(userData)}
+					
 				>
-					Realizar compra
-				</button>
+					Finalizar Compra
+				</Button>
+
+				)}
 				<button
 					onClick={(evt) => {
 						evt.preventDefault();
