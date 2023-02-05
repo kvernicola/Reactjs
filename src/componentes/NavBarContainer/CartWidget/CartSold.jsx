@@ -4,21 +4,16 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductSoldByID } from "../../../services/firebase";
 
-
 function CartSold() {
 	const [productID, setProductID] = useState("");
-	const { buyer, date, items, total } = productID;
+	const { buyer, items, total } = productID;
 
 	let { venta_id } = useParams();
-	//console.log(venta_id);
 
 	useEffect(() => {
 		getProductSoldByID(venta_id).then((product) => {
 			const productById = product.data();
-			//const { buyer, date, items, total } = product.data();
-			console.log(productById);
-			setProductID(productById); // al setear productID entra en bucle
-			//console.log(productID);
+			setProductID(productById);
 		});
 	}, [venta_id]);
 
@@ -26,8 +21,8 @@ function CartSold() {
 		<div>
 			<h1>Gracias por su compra</h1>
 			<h4>El Id de su compra es: {venta_id}</h4>
-            <span>"NO SE MUESTRAN TODOS LOS PRODUCTOS"</span>
-            <br />
+			<span>"NO SE MUESTRAN TODOS LOS PRODUCTOS (yet)"</span>
+			<br />
 			{productID && (
 				<>
 					<span>

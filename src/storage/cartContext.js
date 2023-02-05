@@ -46,13 +46,12 @@ function CartProvider(props) {
 			setInCart(JSON.parse(localStorage.getItem("inCart")));
 		} */
 		//localStorage.setItem("inCart", JSON.stringify(inCart));
-		console.log(JSON.parse(localStorage.getItem("inCart")));
+		//console.log(JSON.parse(localStorage.getItem("inCart")));
 	}, [inCart]);
 
 	// agregar producto al carrito
 	const addToCart = (product) => {
 		const foundProduct = inCart.findIndex((item) => item.id === product.id);
-		console.log("Producto con Index:--->", foundProduct, inCart);
 
 		// si no existe lo agrega
 		if (foundProduct === -1) {
@@ -61,8 +60,8 @@ function CartProvider(props) {
 			toastNotify(mensaje);
 			// si existe le suma la cantidad al producto en el carrito
 		} else {
-			const addQuantity = structuredClone(inCart); // ej 1 deep copy moderno
-			//const addQuantity = JSON.parse(JSON.stringify(inCart)); //ej 2 deep copy
+			const addQuantity = structuredClone(inCart); // ej 1 deepcopy
+			//const addQuantity = JSON.parse(JSON.stringify(inCart)); //ej 2 deepcopy
 			addQuantity[foundProduct].quantity += product.quantity;
 			setInCart(addQuantity);
 			const mensaje = `Actualizaste el producto: ${product.category} ${product.name} en el carrito`;
@@ -114,7 +113,7 @@ function CartProvider(props) {
 	// filtrar productos por texto - busca solo en la base, no en el carrito
 	function search(text) {
 		setSearchText(text);
-		console.log(searchText);
+		//console.log(searchText);
 	}
 
 	return (

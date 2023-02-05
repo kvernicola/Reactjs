@@ -10,7 +10,6 @@ import { sendOrder } from "../../../services/firebase";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import FormBuyer from "../../Forms/FormBuyer";
-//import { useState } from "react";
 
 function CartWidget() {
 	const { inCart, getTotalItemsInCart } = useContext(cartContext);
@@ -28,7 +27,7 @@ function CartWidget() {
 function Cart() {
 	const { inCart, getTotalItemsInCart, getTotalPrice, clearCart } =
 		useContext(cartContext);
-	//const [orderID, setOrderID] = useState();
+
 	const navigateTo = useNavigate();
 
 	function handleClearCart() {
@@ -108,7 +107,6 @@ function Cart() {
 					return <ItemsCartWidget product={itemProduct} key={itemProduct.id} />;
 				})}
 			</div>
-
 			<FlexContainer className="flexContainer">
 				<div className="col-6">
 					{inCart.length === 0 ? (
@@ -118,7 +116,6 @@ function Cart() {
 									Ver todos los productos
 								</Button>
 							</FlexContainer>
-							
 						</>
 					) : (
 						<>
@@ -151,11 +148,6 @@ function Cart() {
 							$ {getTotalPrice()}
 						</strong>
 					</div>
-					{/* {inCart.length > 0 && (
-						<Button className="btn btn-danger" onClick={handlePurchase}>
-							Finalizar Compra
-						</Button>
-					)} */}
 				</div>
 			</FlexContainer>
 		</>

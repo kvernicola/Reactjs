@@ -26,7 +26,9 @@ function ItemCard(props) {
 			{stock <= 2 && <span className="disponibles">Ultimos disponibles</span>}
 			<div className="card-body">
 				<h4 className="card-title mb-3">{name}</h4>
-				<h5 className="mb-3"><span className="price">Precio:</span> $ {price}</h5>
+				<h5 className="mb-3">
+					<span className="price">Precio:</span> $ {price}
+				</h5>
 				<Button
 					href={`/detalle/${id}`}
 					className="btn btn-outline-success"

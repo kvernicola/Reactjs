@@ -10,7 +10,6 @@ import { CartProvider } from "./storage/cartContext";
 import HomePage from "./pages/HomePage";
 import Form from "./componentes/Forms/Form";
 import { Cart } from "./componentes/NavBarContainer/CartWidget/CartWidget";
-import { getProducts } from "./services/firebase";
 import CartSold from "./componentes/NavBarContainer/CartWidget/CartSold";
 import FormBuyer from "./componentes/Forms/FormBuyer";
 

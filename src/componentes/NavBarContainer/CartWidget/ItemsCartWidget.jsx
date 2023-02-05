@@ -11,7 +11,6 @@ function ItemsCartWidget(props) {
 	function handleOnClick() {
 		removeFromCart(props.product);
 	}
-	
 
 	return (
 		<FlexContainer className="flexContainer itemCart">

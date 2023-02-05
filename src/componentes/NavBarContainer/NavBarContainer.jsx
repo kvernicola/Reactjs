@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { cartContext } from "../../storage/cartContext";
 
-
 function NavBarContainer(props) {
 	const navBarLinks = [
 		{
@@ -26,8 +25,8 @@ function NavBarContainer(props) {
 		},
 		/* {
 			id: 3,
-			title: "Detalle",
-			url: "/detalle",
+			title: "Login",
+			url: "/login",
 			classLi: "nav-item",
 			classA: "nav-link",
 		}, */
@@ -36,11 +35,8 @@ function NavBarContainer(props) {
 	const { search } = useContext(cartContext);
 
 	function handleSubmit(evt) {
-		//evt.preventDefault();
 		let text = evt.target.form[0].value;
-		search(text)
-
-		console.log(evt.target.form[0].value);
+		search(text);
 	}
 	return (
 		<header className="App-header">

@@ -13,8 +13,6 @@ function ItemList() {
 	const { searchText } = useContext(cartContext);
 
 	let { category_id } = useParams();
-	//console.log(useParams());
-	//console.log("%cRenderizando ItemListContainer", "background-color: blue");
 
 	useEffect(() => {
 		if (searchText) {
@@ -24,26 +22,18 @@ function ItemList() {
 					console.log("Resultado ", resolveDB);
 				})
 				.catch((rejectDB) => {
-					/* const mensaje = `No se pudo realizar la consulta: Respuesta  ${rejectDB}`;
-					const type = "info";
-					toastNotify(mensaje, type); */
 					alert(rejectDB);
 				})
 				.finally(() => {
 					setIsLoading(false);
 				});
 		}
-
 		else if (!category_id) {
 			getProducts()
 				.then((resolveDB) => {
 					setProducts(resolveDB);
-					//console.log("Resultado ", resolveDB);
 				})
 				.catch((rejectDB) => {
-					/* const mensaje = `No se pudo realizar la consulta: Respuesta  ${rejectDB}`;
-					const type = "info";
-					toastNotify(mensaje, type); */
 					alert(rejectDB);
 				})
 				.finally(() => {
@@ -53,22 +43,14 @@ function ItemList() {
 			getProductsByCategory(category_id)
 				.then((resolveDB) => {
 					setProducts(resolveDB);
-					//console.log("Resultado ", resolveDB);
 				})
 				.catch((rejectDB) => {
-					/* const mensaje = `No se pudo realizar la consulta: Respuesta  ${rejectDB}`;
-					const type = "info";
-					toastNotify(mensaje, type); */
 					alert(rejectDB);
 				})
 				.finally(() => {
 					setIsLoading(false);
 				});
 		}
-
-		setTimeout(() => {
-			//console.log("Iniciando consulta de productos disponibles");
-		}, 1000);
 	}, [category_id, searchText]);
 
 	return (
@@ -85,4 +67,3 @@ function ItemList() {
 }
 
 export default ItemList;
-//export { searchItems };

@@ -5,7 +5,6 @@ import {
 	getDocs,
 	getDoc,
 	doc,
-	setDoc,
 	query,
 	where,
 	addDoc,
@@ -193,7 +192,6 @@ export async function getProducts() {
 		Products.id = doc.id;
 		return Products;
 	});
-	//console.log(ProductsDB);
 	return ProductsDB;
 }
 
@@ -211,9 +209,7 @@ export async function getProductsByCategory(category_id) {
 	const productsRef = collection(db, "ProductsDB");
 
 	const q = query(productsRef, where("category", "==", category_id));
-
 	const querySnapshot = await getDocs(q);
-
 	const ProductsDB = querySnapshot.docs.map((doc) => {
 		let Products = doc.data();
 		Products.id = doc.id;
@@ -227,7 +223,6 @@ export async function getProductsBySearchText(searchText) {
 	const productsRef = collection(db, "ProductsDB");
 
 	const snapshot = await getDocs(productsRef);
-
 	const ProductsDB = snapshot.docs.map((doc) => {
 		let Products = doc.data();
 		Products.id = doc.id;
@@ -237,11 +232,9 @@ export async function getProductsBySearchText(searchText) {
 		...item,
 		name: item.name.toLowerCase(),
 	}));
-	console.log(toLowerCase);
 	const ProductsSearch = toLowerCase.filter((elem) =>
 		elem.name.includes(searchText)
 	);
-	console.log();
 	return ProductsSearch;
 }
 
@@ -255,12 +248,7 @@ export async function sendOrder(order) {
 	// Implica primero armar un batch para actualizar todo junto
 
 	const resolve = await addDoc(orderRef, order);
-	console.log(resolve);
-	/* .then((resolve)=> {
-		console.log(resolve);
-		console.log(resolve.id);
-	})*/
-
+	//console.log(resolve);
 	return resolve.id;
 }
 
@@ -271,10 +259,9 @@ export async function getProductSoldByID(venta_id) {
 
 	const snapshot = await getDoc(docRef);
 	return snapshot;
-	//return { ...snapshot.data(), id: snapshot.id };
 }
 
-// Funcion para cargar los productos con el btn item x item
+//cargar los productos con el btn item x item
 export async function loadProductsToFirestore() {
 	for (let item of ProductsDB) {
 		item.index = item.id;
@@ -285,21 +272,19 @@ export async function loadProductsToFirestore() {
 	}
 }
 
-// Funcion para cargar los productos con el btn todos juntos con un batch
+//cargar los productos con el btn todos juntos con un batch
 export async function loadProductsToFirestoreWithBatch() {
 	const batch = writeBatch(db);
 
 	for (let item of ProductsDB) {
 		item.index = item.id;
 		delete item.id;
-		// envio id arbitrario - 
+		// envio id arbitrario -
 		//De este modo no duplica los doc- (si modifico las props del array que subo--->actualiza la base en firestore)
 		const itemRef = doc(db, "ProductsDB", `${item.index}`);
 		batch.set(itemRef, item);
 	}
-	batch.commit().then(()=>console.log("Finalizo el batch"))
+	batch.commit().then(() => console.log("Finalizo el batch"));
 }
 
-
 export default db;
-

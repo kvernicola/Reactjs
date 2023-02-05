@@ -5,7 +5,6 @@ import { useState } from "react";
 import FlexContainer from "../FlexContainer/FlexContainer";
 
 function FormBuyer(props) {
-	console.log(props);
 	const [userData, setUserData] = useState({
 		name: "",
 		lastname: "",
@@ -14,25 +13,15 @@ function FormBuyer(props) {
 		address: "",
 	});
 
-	console.log(userData);
-
-	function onSubmit(evt) {
-		evt.preventDefault();
-		console.log("Compra realizada!");
-	}
-
 	function onInputChange(evt) {
 		let value = evt.target.value;
 		let inputName = evt.target.name;
-
 		let newData = { ...userData };
 		newData[inputName] = value;
 		setUserData(newData);
-
-		console.log("Soy el input Nombre", evt.target.value);
 	}
 
-	function formIsvalid() {
+	function formIsValid() {
 		return !(
 			userData.name !== "" &&
 			userData.lastname !== "" &&
@@ -84,14 +73,14 @@ function FormBuyer(props) {
 			<FlexContainer>
 				<button
 					className="btn btn-danger btnForm"
-					disabled={formIsvalid()}
+					disabled={formIsValid()}
 					type="submit"
 				>
 					Realizar compra
 				</button>
 				<button
 					onClick={(evt) => {
-                        evt.preventDefault();
+						evt.preventDefault();
 						setUserData({
 							name: "",
 							lastname: "",

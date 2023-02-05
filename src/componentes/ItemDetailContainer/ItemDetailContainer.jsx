@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-//import { getProduct } from "../../services/dataBase";
 import { getProduct } from "../../services/firebase";
 import FlexContainer from "../FlexContainer/FlexContainer";
 import Loader from "../Loader/Loader";
@@ -9,7 +8,6 @@ import ItemDetail from "./ItemDetail";
 function ItemDetailContainer() {
 	const [product, setProduct] = useState([]);
 	let { product_id } = useParams();
-	//console.log("%cRenderizando ItemDetailContainer", "background-color: green");
 
 	useEffect(() => {
 		getProduct(product_id)
