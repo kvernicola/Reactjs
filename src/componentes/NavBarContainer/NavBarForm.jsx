@@ -1,12 +1,13 @@
 import ButtonBuscar from "../Button/ButtonBuscar";
 
 function NavBarForm(props) {
+
 	return (
 		<form className="d-flex" role="search">
 			<input
-				name="Buscar"
+				name="Search"
 				className="form-control me-3"
-				type="Buscar"
+				type="Search"
 				placeholder="Buscar"
 				aria-label="Buscar"
 			></input>

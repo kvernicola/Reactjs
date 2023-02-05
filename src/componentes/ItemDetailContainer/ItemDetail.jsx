@@ -30,7 +30,7 @@ function ItemDetail(props) {
 				<h4 className="card-titleDetail">{name}</h4>
 				<span className="card-titleDetail">{category}</span>
 				<p className="card-text">{description}</p>
-				<h5 className="mb-1">$ {price}</h5>
+				<h5 className="mb-1"><span className="price">Precio:</span> $ {price}</h5>
 				{/* <ItemCounter onAddToCart={handleOnAddToCart} stock={stock} /> */}
 				{/* <Button
 					onClick={handleOnAddToCart}

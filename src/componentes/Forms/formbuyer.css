@@ -1,0 +1,24 @@
+.formTitle {
+    margin: 2rem;
+}
+
+.formbuyer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer {
+    color: black;
+}
+
+.inputForm {
+    color: black;
+    width: 350px;
+    margin: 3px auto;
+}
+
+.btnForm {
+    margin: 15px 5px;
+}

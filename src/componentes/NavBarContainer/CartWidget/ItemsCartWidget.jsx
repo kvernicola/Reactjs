@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 
 function ItemsCartWidget(props) {
 	const { name, image, price, quantity, category, id } = props.product;
+	const { removeFromCart } = useContext(cartContext);
 
 	function handleOnClick() {
 		removeFromCart(props.product);
 	}
-	const { removeFromCart } = useContext(cartContext);
+	
+
 	return (
 		<FlexContainer className="flexContainer itemCart">
 			<div className="deleteCart col-1">

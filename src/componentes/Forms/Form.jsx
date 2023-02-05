@@ -30,7 +30,7 @@ function Form() {
 			<div className="container">
 				<div className="front side">
 					<div className="content">
-						<h1>Paula</h1>
+						<h1>Sweetvelvet By Paula</h1>
 						<p>
 							I am a graphic designer and art director. I am as well specialised
 							in front end web design, user experience and creating identities.
@@ -41,12 +41,12 @@ function Form() {
 				</div>
 				<div className="back side">
 					<div className="content">
-						<h1>Contactame</h1>
+						<h1>Contactanos</h1>
 						<form onSubmit={handleSubmit}>
 							<label>Nombre :</label>
 							<input type="text" placeholder="Tu nombre" />
 							<label>E-mail :</label>
-							<input onKeyDown={handleKeyDown} type="text" placeholder="Example@mail.com" />
+							<input onKeyDown={handleKeyDown} type="text" placeholder="ejemplo@mail.com" />
 							<label>Mensaje :</label>
 							<textarea placeholder="Dejanos tu mensaje"></textarea>
 							<input type="submit" value="Enviar" />

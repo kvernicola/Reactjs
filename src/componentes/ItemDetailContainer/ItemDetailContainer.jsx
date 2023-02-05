@@ -10,7 +10,6 @@ function ItemDetailContainer() {
 	const [product, setProduct] = useState([]);
 	let { product_id } = useParams();
 	//console.log("%cRenderizando ItemDetailContainer", "background-color: green");
-	console.log(product_id);
 
 	useEffect(() => {
 		getProduct(product_id)

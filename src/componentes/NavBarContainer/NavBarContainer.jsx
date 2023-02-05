@@ -4,6 +4,8 @@ import ItemNavBar from "./ItemNavBar";
 import NavBarForm from "./NavBarForm";
 import CartWidget from "./CartWidget/CartWidget";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { cartContext } from "../../storage/cartContext";
 
 
 function NavBarContainer(props) {
@@ -31,10 +33,13 @@ function NavBarContainer(props) {
 		}, */
 	];
 
+	const { search } = useContext(cartContext);
+
 	function handleSubmit(evt) {
-		evt.preventDefault();
+		//evt.preventDefault();
 		let text = evt.target.form[0].value;
-		props.onFind(text);
+		search(text)
+
 		console.log(evt.target.form[0].value);
 	}
 	return (

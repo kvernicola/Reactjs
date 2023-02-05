@@ -157,7 +157,7 @@ const ProductsDB = [
 	},
 ];
 
-function getProducts() {
+/* function getProducts() {
 	return new Promise((resolve, reject) => {
 		//console.log("Conectando a la DB");
 		let error = false;
@@ -166,9 +166,9 @@ function getProducts() {
 			else resolve(ProductsDB);
 		}, 2000);
 	});
-}
+} */
 
-function getProduct(product_id) {
+/* function getProduct(product_id) {
 	return new Promise((resolve, reject) => {
 		const found = ProductsDB.find((itemProduct) => {
 			//console.log("%cBuscando producto", "background-color: red");
@@ -181,9 +181,9 @@ function getProduct(product_id) {
 			else resolve(found);
 		}, 2000);
 	});
-}
+} */
 
-function getProductsByCategory(category_id) {
+/* function getProductsByCategory(category_id) {
 	return new Promise((resolve, reject) => {
 		const found = ProductsDB.filter((itemProduct) => {
 			//console.log("%cFiltrando producto", "background-color: orange");
@@ -196,7 +196,7 @@ function getProductsByCategory(category_id) {
 			else resolve(found);
 		}, 2000);
 	});
-}
+} */
 
-export default getProducts;
-export { getProduct, getProductsByCategory };
+/* export default getProducts;
+export { getProduct, getProductsByCategory }; */

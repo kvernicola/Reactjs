@@ -1,5 +1,9 @@
 .notFound {
     /* width: 98vw; */
-    height: 85vh;
+    height: 100vh;
 
+}
+
+.imgNotFound {
+    height: 70vh;
 }

@@ -5,33 +5,30 @@ import NavBarContainer from "./componentes/NavBarContainer/NavBarContainer";
 import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailContainer";
-import NotFoundPage from "./pages/NotFoundPage";
+import PageNotFound from "./pages/PageNotFound";
 import { CartProvider } from "./storage/cartContext";
 import HomePage from "./pages/HomePage";
 import Form from "./componentes/Forms/Form";
 import { Cart } from "./componentes/NavBarContainer/CartWidget/CartWidget";
 import { getProducts } from "./services/firebase";
+import CartSold from "./componentes/NavBarContainer/CartWidget/CartSold";
+import FormBuyer from "./componentes/Forms/FormBuyer";
 
 
 function App() {
-	getProducts();
-	function find(paramBuscar) {
-		alert(`No!, por ahi no vas a encontrar... ${paramBuscar} por ahora`);
-	}
+
 
 	return (
 		<div className="App">
 			<BrowserRouter>
 				<CartProvider>
-					<NavBarContainer onFind={find} />
+					<NavBarContainer/>
 					<Routes>
 						<Route path="/" element={<HomePage />} />
 						<Route
 							path="/historia"
 							element={
-								<div>
-									<h1>Proximamente</h1>
-								</div>
+								<FormBuyer/>
 							}
 						/>
 						<Route
@@ -48,7 +45,8 @@ function App() {
 							element={<ItemDetailContainer />}
 						/>
 						<Route path="/carrito" element={<Cart />} />
-						<Route path="*" element={<NotFoundPage />} />
+						<Route path="/carrito/venta/:venta_id" element={<CartSold/>} />
+						<Route path="*" element={<PageNotFound />} />
 					</Routes>
 					<ToastContainer />
 				</CartProvider>

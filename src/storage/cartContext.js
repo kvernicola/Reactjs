@@ -1,21 +1,13 @@
 import React from "react";
 import { createContext } from "react";
 import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const cartContext = createContext({});
 
-/* Swal.fire({
-				title: "Success",
-				text: "El producto fue agregado al carrito",
-				icon: "success",
-				confirmButtonText: "ok",
-			}); */
-
-function toastNofify(mensaje, type) {
+function toastNotify(mensaje, type) {
 	switch (type) {
 		case "info":
 			toast.info(mensaje, {
@@ -41,27 +33,46 @@ function toastNofify(mensaje, type) {
 
 function CartProvider(props) {
 	const [inCart, setInCart] = useState([]);
+	//const [saveInLocalStorage, setSaveInLocalStorage] = useState([]);
+	const [searchText, setSearchText] = useState(null);
 
+	function saveInLocalStorage() {
+		localStorage.setItem("inCart", JSON.stringify(inCart));
+	}
+
+	// RESOLVER EL GUARDADO EN EL LOCALSTORAGE
+	useEffect(() => {
+		/* if (localStorage.getItem("inCart")) {
+			setInCart(JSON.parse(localStorage.getItem("inCart")));
+		} */
+		//localStorage.setItem("inCart", JSON.stringify(inCart));
+		console.log(JSON.parse(localStorage.getItem("inCart")));
+	}, [inCart]);
+
+	// agregar producto al carrito
 	const addToCart = (product) => {
 		const foundProduct = inCart.findIndex((item) => item.id === product.id);
-		console.log("Producto con Index:--->", foundProduct, inCart); //retorna la posicion
+		console.log("Producto con Index:--->", foundProduct, inCart);
 
+		// si no existe lo agrega
 		if (foundProduct === -1) {
-			setInCart([...inCart, product]); //agrego el producto al carrito
+			setInCart([...inCart, product]);
 			const mensaje = `Agregaste: ${product.quantity} ${product.category} ${product.name} al carrito`;
-			toastNofify(mensaje);
+			toastNotify(mensaje);
+			// si existe le suma la cantidad al producto en el carrito
 		} else {
-			//removeFromCart(product);
-			const updateProduct = [...inCart]
-			updateProduct[foundProduct].quantity += product.quantity
-
-			setInCart(updateProduct);
+			const addQuantity = structuredClone(inCart); // ej 1 deep copy moderno
+			//const addQuantity = JSON.parse(JSON.stringify(inCart)); //ej 2 deep copy
+			addQuantity[foundProduct].quantity += product.quantity;
+			setInCart(addQuantity);
 			const mensaje = `Actualizaste el producto: ${product.category} ${product.name} en el carrito`;
-			const type = "info"
-			toastNofify(mensaje, type);
+			const type = "info";
+			toastNotify(mensaje, type);
 		}
+		saveInLocalStorage();
 	};
 
+	// caclcular el precio total
 	function getTotalPrice() {
 		const pricePerQuantity = inCart.map((item) => item.price * item.quantity);
 		const initialValue = 0;
@@ -72,6 +83,7 @@ function CartProvider(props) {
 		return total;
 	}
 
+	// calcular la cantidad de items en carrito
 	function getTotalItemsInCart() {
 		const initialValue = 0;
 		const itemsInCart = inCart.map((item) => item.quantity);
@@ -82,28 +94,28 @@ function CartProvider(props) {
 		return totalItems;
 	}
 
+	// eliminar el producto del carrito
 	const removeFromCart = (product) => {
 		const mensaje = `Eliminaste el producto: ${product.category} ${product.name} del carrito`;
 		const type = "info";
-		toastNofify(mensaje, type);
+		toastNotify(mensaje, type);
 		setInCart(inCart.filter((item) => item.id !== product.id));
+		localStorage.setItem("inCart", JSON.stringify(inCart));
 	};
 
+	// vaciar el carrito
 	const clearCart = () => {
 		setInCart([]);
-		const mensaje = "Vaciaste el carrito";
-		toastNofify(mensaje);
+		const mensaje = "El carrito ahora esta vacio";
+		toastNotify(mensaje);
 		//localStorage.removeItem("inCart");
 	};
 
-	/* useEffect(() => {
-		if (localStorage.getItem("inCart")) {
-			setInCart(JSON.parse(localStorage.getItem("inCart")));
-			setTotal(JSON.parse(localStorage.getItem("total")));
-		}
-		localStorage.setItem("inCart", JSON.stringify(inCart));
-		localStorage.setItem("total", JSON.stringify(total));
-	}, []); */
+	// filtrar productos por texto - busca solo en la base, no en el carrito
+	function search(text) {
+		setSearchText(text);
+		console.log(searchText);
+	}
 
 	return (
 		<cartContext.Provider
@@ -115,6 +127,9 @@ function CartProvider(props) {
 				getTotalPrice,
 				removeFromCart,
 				clearCart,
+				toastNotify,
+				search,
+				searchText,
 			}}
 		>
 			{props.children}

@@ -6,6 +6,11 @@ import { cartContext } from "../../../storage/cartContext";
 import ItemsCartWidget from "./ItemsCartWidget";
 import FlexContainer from "../../FlexContainer/FlexContainer";
 import Button from "../../Button/Button";
+import { sendOrder } from "../../../services/firebase";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import FormBuyer from "../../Forms/FormBuyer";
+//import { useState } from "react";
 
 function CartWidget() {
 	const { inCart, getTotalItemsInCart } = useContext(cartContext);
@@ -23,13 +28,58 @@ function CartWidget() {
 function Cart() {
 	const { inCart, getTotalItemsInCart, getTotalPrice, clearCart } =
 		useContext(cartContext);
+	//const [orderID, setOrderID] = useState();
+	const navigateTo = useNavigate();
 
 	function handleClearCart() {
 		clearCart();
 	}
 
-	function handlePurchase() {
-		window.location.href = "/carrito";
+	function handlePurchase(evt) {
+		evt.preventDefault();
+		/* const productsInOrder = inCart.map((product) => ({
+			id: product.id,
+			name: product.name,
+			category: product.category,
+			quantity: product.quantity,
+			price: product.price,
+		})); */
+		const productsInOrder = inCart.map(
+			({ id, name, category, quantity, price }) => ({
+				id,
+				name,
+				category,
+				quantity,
+				price,
+			})
+		);
+
+		const order = {
+			buyer: {
+				name: "Andres",
+				lastname: "Giribaldi",
+				email: "amgiribaldi@gmail.com",
+				phone: "116-8823508",
+			},
+			items: productsInOrder,
+			total: getTotalPrice(),
+			date: new Date(),
+		};
+		//console.table(order);
+
+		sendOrder(order).then((resolve) => {
+			Swal.fire({
+				title: "Success",
+				text: `Compra realizada. El ID de su compra es: ${resolve}.`,
+				icon: "success",
+				confirmButtonText: "OK",
+			});
+			clearCart();
+
+			setTimeout(() => {
+				navigateTo(`/carrito/venta/${resolve}`);
+			}, 3000);
+		});
 	}
 
 	return (
@@ -62,11 +112,14 @@ function Cart() {
 			<FlexContainer className="flexContainer">
 				<div className="col-6">
 					{inCart.length === 0 ? (
-						<FlexContainer className="flexContainer">
-							<Button href="/productos" className="btn btn-danger">
-								Ver todos los productos
-							</Button>
-						</FlexContainer>
+						<>
+							<FlexContainer className="flexContainer">
+								<Button href="/productos" className="btn btn-danger">
+									Ver todos los productos
+								</Button>
+							</FlexContainer>
+							
+						</>
 					) : (
 						<>
 							<FlexContainer className="flexContainer">
@@ -78,6 +131,7 @@ function Cart() {
 								</Button>
 							</FlexContainer>
 							<FlexContainer className="flexContainer"></FlexContainer>
+							<FormBuyer onClick={handlePurchase} />
 						</>
 					)}
 				</div>
@@ -97,9 +151,11 @@ function Cart() {
 							$ {getTotalPrice()}
 						</strong>
 					</div>
-					<Button className="btn btn-danger" onClick={handlePurchase}>
-						Finalizar Compra
-					</Button>
+					{/* {inCart.length > 0 && (
+						<Button className="btn btn-danger" onClick={handlePurchase}>
+							Finalizar Compra
+						</Button>
+					)} */}
 				</div>
 			</FlexContainer>
 		</>
