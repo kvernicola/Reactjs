@@ -35,15 +35,6 @@ function Cart() {
 	}
 
 	function handleOnPurchase(userData) {
-		//console.log(userData);
-		console.log(userData, userData.name, userData.email);
-		/* const productsInOrder = inCart.map((product) => ({
-			id: product.id,
-			name: product.name,
-			category: product.category,
-			quantity: product.quantity,
-			price: product.price,
-		})); */
 		const productsInOrder = inCart.map(
 			({ id, name, category, quantity, price }) => ({
 				id,
@@ -53,7 +44,6 @@ function Cart() {
 				price,
 			})
 		);
-
 		const order = {
 			buyer: {
 				name: userData.name,
@@ -66,7 +56,6 @@ function Cart() {
 			total: getTotalPrice(),
 			date: new Date(),
 		};
-		console.table(order);
 
 		sendOrder(order).then((resolve) => {
 			Swal.fire({

@@ -1,4 +1,3 @@
-import Button from "../Button/Button";
 import "./form.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,13 +14,11 @@ function Form() {
 
 	function handleKeyDown(evt) {
 		let key = evt.key.toLowerCase();
-		console.log(key);
 		if (blockKey.includes(key)) {
 			evt.preventDefault();
 			toast.error("No se puede usar ñ-+?¡¿' !", {
 				position: toast.POSITION.TOP_CENTER,
 			});
-			console.log("Bloqueado");
 		}
 	}
 
@@ -60,36 +57,3 @@ function Form() {
 
 export default Form;
 
-/* function Form() {
-	const blockKey = "ñ-+?¡¿'";
-
-	function handleSubmit(evt) {
-		evt.preventDefault();
-		alert("Se ha enviado el formulario");
-	}
-
-	function handleKeyDown(evt) {
-		let key = evt.key.toLowerCase();
-		console.log(key);
-		if (blockKey.includes(key)) {
-			evt.preventDefault();
-			console.log("Bloqueado");
-		}
-	}
-
-	return (
-		<form onSubmit={handleSubmit}>
-			<div className="form-group">
-				<input
-					className="inputTxt"
-					onKeyDown={handleKeyDown}
-					type="text"
-					placeholder="Ingresa el texto"
-				/>
-				<button type="submit">Enviar</button>
-			</div>
-		</form>
-	);
-}
-
-export default Form; */

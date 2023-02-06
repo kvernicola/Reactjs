@@ -8,12 +8,10 @@ function ItemDetail(props) {
 	const { name, image, price, description, stock, category } = props.product;
 	const product = props.product;
 	const { addToCart } = useContext(cartContext);
-
 	const [newQuantity, setNewQuantity] = useState(0);
 
 	function handleOnAddToCart(quantity) {
 		product.quantity = quantity;
-		//console.log(`Recibe cantidad: ${product.quantity} de itemCounter`);
 		setNewQuantity(quantity);
 		addToCart(product);
 	}

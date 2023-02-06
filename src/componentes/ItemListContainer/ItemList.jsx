@@ -9,9 +9,7 @@ import { useContext } from "react";
 function ItemList() {
 	const [Products, setProducts] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-
 	const { searchText } = useContext(cartContext);
-
 	let { category_id } = useParams();
 
 	useEffect(() => {
@@ -19,7 +17,6 @@ function ItemList() {
 			getProductsBySearchText(searchText)
 				.then((resolveDB) => {
 					setProducts(resolveDB);
-					console.log("Resultado ", resolveDB);
 				})
 				.catch((rejectDB) => {
 					alert(rejectDB);

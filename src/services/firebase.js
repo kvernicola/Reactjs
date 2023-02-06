@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { initializeApp } from "firebase/app";
 import {
 	getFirestore,
@@ -186,7 +188,6 @@ const db = getFirestore(app);
 export async function getProducts() {
 	const productsRef = collection(db, "ProductsDB");
 	const snapshot = await getDocs(productsRef);
-
 	const ProductsDB = snapshot.docs.map((doc) => {
 		let Products = doc.data();
 		Products.id = doc.id;
@@ -199,7 +200,6 @@ export async function getProducts() {
 export async function getProduct(product_id) {
 	const productsRef = collection(db, "ProductsDB");
 	const docRef = doc(productsRef, product_id);
-
 	const snapshot = await getDoc(docRef);
 	return { ...snapshot.data(), id: snapshot.id };
 }
@@ -207,7 +207,6 @@ export async function getProduct(product_id) {
 //obtener productos filtrado por categoria
 export async function getProductsByCategory(category_id) {
 	const productsRef = collection(db, "ProductsDB");
-
 	const q = query(productsRef, where("category", "==", category_id));
 	const querySnapshot = await getDocs(q);
 	const ProductsDB = querySnapshot.docs.map((doc) => {
@@ -221,7 +220,6 @@ export async function getProductsByCategory(category_id) {
 //obtener productos filtrado por busqueda -- Si no borro el imput y busco vacio queda siempre el producto buscado
 export async function getProductsBySearchText(searchText) {
 	const productsRef = collection(db, "ProductsDB");
-
 	const snapshot = await getDocs(productsRef);
 	const ProductsDB = snapshot.docs.map((doc) => {
 		let Products = doc.data();
@@ -246,9 +244,8 @@ export async function sendOrder(order) {
 	//2- validar que no excedan el stock disponible
 	//3- actualizar el stock en firebase despues de la compra
 	// Implica primero armar un batch para actualizar todo junto
-
 	const resolve = await addDoc(orderRef, order);
-	//console.log(resolve);
+
 	return resolve.id;
 }
 
@@ -256,7 +253,6 @@ export async function sendOrder(order) {
 export async function getProductSoldByID(venta_id) {
 	const productsRef = collection(db, "OrdersDB");
 	const docRef = doc(productsRef, venta_id);
-
 	const snapshot = await getDoc(docRef);
 	return snapshot;
 }
@@ -266,9 +262,7 @@ export async function loadProductsToFirestore() {
 	for (let item of ProductsDB) {
 		item.index = item.id;
 		delete item.id;
-		await addDoc(collection(db, "ProductsDB"), item).then((resolve) => {
-			console.log("Subiendo Producto", resolve.id);
-		});
+		await addDoc(collection(db, "ProductsDB"), item).then((resolve) => {});
 	}
 }
 
@@ -284,7 +278,9 @@ export async function loadProductsToFirestoreWithBatch() {
 		const itemRef = doc(db, "ProductsDB", `${item.index}`);
 		batch.set(itemRef, item);
 	}
-	batch.commit().then(() => console.log("Finalizo el batch"));
+	batch.commit().then(() => {
+		toast("Batch commit finalizado");
+	});
 }
 
 export default db;

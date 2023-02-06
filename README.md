@@ -1,18 +1,29 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center"> Ecommerce-ReactJs </h1> <br>
+<p align="center">
+  <a href="https://reactjs-tienda.vercel.app/">
+    <img alt="reactjs logo" title="ReactJs" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ksMxoE_U24lc9jFzqNvylA.jpeg" width="450">
+  </a>
+</p>
 
-## Available Scripts
+App iniciada con [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+Proyecto creado para el curso de ReacJs en CoderHouse <br>
+Ecommerce desarrollado con ReactJs-Boostrap-Css <br>
+Utiliza base de datos noSQL--FireStore <br>
 
-### `npm start`
+Para realizar un deploy local podes clonar el repositorio con la siguiente url: <br> [https://github.com/kvernicola/Reactjs.git](https://github.com/kvernicola/Reactjs.git) desde git o podes descargarlo como .zip
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Necesitas tener instalado [Node.js](https://nodejs.org/es/) y ejecutar los siguientes comandos en el directorio del proyecto:
+### `npm-install`  
+(instala las dependencias)
+### `npm start`    
+(inicia un servidor local)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Podes visualizar el proyecto accediendo con tu navegador a la siguiente url:
+[http://localhost:3000](http://localhost:3000)
+
+
 
 ### `npm test`
 

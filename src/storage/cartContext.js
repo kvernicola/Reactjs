@@ -46,7 +46,6 @@ function CartProvider(props) {
 			setInCart(JSON.parse(localStorage.getItem("inCart")));
 		} */
 		//localStorage.setItem("inCart", JSON.stringify(inCart));
-		//console.log(JSON.parse(localStorage.getItem("inCart")));
 	}, [inCart]);
 
 	// agregar producto al carrito
@@ -113,7 +112,6 @@ function CartProvider(props) {
 	// filtrar productos por texto - busca solo en la base, no en el carrito
 	function search(text) {
 		setSearchText(text);
-		//console.log(searchText);
 	}
 
 	return (
