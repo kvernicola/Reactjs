@@ -5,15 +5,15 @@ import { cartContext } from "../../storage/cartContext";
 import Button from "../Button/Button";
 
 function ItemDetail(props) {
-	const { name, image, price, description, stock, category } = props.product;
-	const product = props.product;
+	const { name, image, price, description, category } = props.product;
+
 	const { addToCart } = useContext(cartContext);
 	const [newQuantity, setNewQuantity] = useState(0);
 
 	function handleOnAddToCart(quantity) {
-		product.quantity = quantity;
+		props.product.quantity = quantity;
 		setNewQuantity(quantity);
-		addToCart(product);
+		addToCart(props.product);
 	}
 
 	return (
@@ -28,7 +28,7 @@ function ItemDetail(props) {
 					<span className="price">Precio:</span> $ {price}
 				</h5>
 				{newQuantity === 0 ? (
-					<ItemCounter onAddToCart={handleOnAddToCart} stock={stock} />
+					<ItemCounter onAddToCart={handleOnAddToCart} stock={props.newStock} />
 				) : (
 					<Button
 						href="/carrito"

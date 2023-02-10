@@ -26,30 +26,45 @@ export default function ItemCounter(props) {
 		}
 	}
 	return (
-		<div className="counter">
-			<Button
-				onClick={handleCounterLess}
-				color="black"
-				className={`btn btn-outline-success ${displayLess}`}
-			>
-				-
-			</Button>
-			<span>Cantidad: {counter}</span>
-			<Button
-				onClick={handleCounterMore}
-				color="black"
-				className={`btn btn-outline-success ${displayMore}`}
-			>
-				+
-			</Button>
-			<br />
-			<Button
-				onClick={() => onAddToCart(counter)}
-				className="btn btn-outline-success"
-				color="black"
-			>
-				Añadir al carrito
-			</Button>
-		</div>
+		<>
+			{props.stock !== 0 ? (
+				<div className="counter">
+					<Button
+						onClick={handleCounterLess}
+						color="black"
+						className={`btn btn-outline-success ${displayLess}`}
+					>
+						-
+					</Button>
+					<span>Cantidad: {counter}</span>
+					<Button
+						onClick={handleCounterMore}
+						color="black"
+						className={`btn btn-outline-success ${displayMore}`}
+					>
+						+
+					</Button>
+					<br />
+					<Button
+						onClick={() => onAddToCart(counter)}
+						className="btn btn-outline-success"
+						color="black"
+					>
+						Añadir al carrito
+					</Button>
+				</div>
+			) : (
+				<>
+				<h5 className="">No hay stock disponible</h5>
+				<Button
+					href="/carrito"
+					color="black"
+					className="btn btn-outline-success mt-4"
+				>
+					Ir al carrito
+				</Button>
+				</>
+			)}
+		</>
 	);
 }

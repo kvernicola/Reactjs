@@ -70,7 +70,7 @@ function CartProvider(props) {
 		saveInLocalStorage();
 	};
 
-	// caclcular el precio total
+	// calcular el precio total
 	function getTotalPrice() {
 		const pricePerQuantity = inCart.map((item) => item.price * item.quantity);
 		const initialValue = 0;
